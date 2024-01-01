@@ -1,0 +1,16 @@
+{
+  "name": "chzzk_discord",
+  "version": "1.0.0",
+  "description": "1. js 로 할 것\r 2. 뱅온 시 알림이 오는 방식으로.",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^14.14.1",
+    "dotenv": "^16.3.1"
+  },
+  "type": "module"
+}
