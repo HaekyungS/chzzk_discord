@@ -1,6 +1,7 @@
 // 슬래시커멘드
 import Discord, { GatewayIntentBits, Message, channelMention } from "discord.js";
 import dotenv from "dotenv";
+import { embedChzzk } from "./ryuChzzk.js";
 
 dotenv.config();
 
@@ -32,6 +33,7 @@ client.on("ready", () => {
     let recentState = liveStatus;
 
     // fetch 로 치지직 api 에서 방송중여부 가져오기.
+    // 치지직 방송 알림
     fetch(process.env.liveAPI, {
       method: "GET",
       headers: {
@@ -47,7 +49,15 @@ client.on("ready", () => {
         if (recentState !== liveStatus) {
           // 만약 그 상태가 open 이라면 방송알림
           if (data.content.status === "OPEN") {
-            channel.send("대쟝왔다!! \n" + process.env.RyuChzzk);
+            const embedsChzzk = embedChzzk(
+              data.content.liveTitle,
+              "스트리머이름",
+              process.env.RyuChzzk,
+              data.content.categoryType,
+              data.content.liveCategoryValue
+            );
+
+            channel.send({ embeds: [embedsChzzk] });
           } else {
             // 뱅종하면 console로 확인
             console.log("지금 아가는 쉬는 중");
