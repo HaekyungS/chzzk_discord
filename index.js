@@ -12,6 +12,7 @@ const client = new Discord.Client({
     GatewayIntentBits.DirectMessages,
     GatewayIntentBits.MessageContent,
   ],
+  disableEveryone: false,
 });
 
 // 봇을 온라인 상태로
@@ -25,9 +26,13 @@ client.on("ready", () => {
   setInterval(() => {
     // 채널아이디를 변수에 담기.
     const channelID = process.env.Channel_ID_natural;
+    const channelID2 = process.env.Channel_ID_Play;
+    const channelID3 = process.env.Channel_ID_Test;
 
     // 채널불러오기.
     const channel = client.channels.cache.get(channelID);
+    const channel2 = client.channels.cache.get(channelID2);
+    const channel3 = client.channels.cache.get(channelID3);
 
     // 라이브상태를 최근라이브상태변수에 대입
     let recentState = liveStatus;
@@ -57,7 +62,9 @@ client.on("ready", () => {
               data.content.liveCategoryValue
             );
 
-            channel.send({ embeds: [embedsChzzk] });
+            channel.send("@everyone 대쟝 보러 가쟈!\n" + { embeds: [embedsChzzk] });
+            channel2.send("@everyone 대쟝 보러 가쟈!\n" + { embeds: [embedsChzzk] });
+            channel3.send("@everyone 대쟝 보러 가쟈!\n" + { embeds: [embedsChzzk] });
           } else {
             // 뱅종하면 console로 확인
             console.log("지금 아가는 쉬는 중");
@@ -77,7 +84,7 @@ client.on("interactionCreate", async (interaction) => {
 
   if (interaction.commandName === "link") {
     await interaction.reply(
-      "치지직 링크는 https://chzzk.naver.com/f67b66f4051fd2744ba9366571565771 입니다. 시간표는 유튜브 커뮤니티 혹은 트위터를 참고해주세요."
+      "치지직 링크는 https://chzzk.naver.com/f67b66f4051fd2744ba9366571565771 입니다.\n시간표는 유튜브 커뮤니티 혹은 트위터를 참고해주세요."
     );
   }
 
