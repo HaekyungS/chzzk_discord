@@ -75,12 +75,28 @@ client.on("ready", () => {
 client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
-  if (interaction.commandName === "ping") {
-    await interaction.reply("Pong!");
+  if (interaction.commandName === "link") {
+    await interaction.reply(
+      "치지직 링크는 https://chzzk.naver.com/f67b66f4051fd2744ba9366571565771 입니다. 시간표는 유튜브 커뮤니티 혹은 트위터를 참고해주세요."
+    );
   }
 
   if (interaction.commandName === "today") {
-    await interaction.reply("오늘 밖에 되게 우중충해");
+    const today = [
+      "오늘도 아카이로 류는 귀엽습니다.",
+      "오늘도 류쪽이네요",
+      "오늘은 쫌 멋있습니댜.",
+      "오늘도 물음표퀘스트를 달성하고 있습니다",
+      "오늘 멋김만 등장해줄수도?!",
+      "류님 복복복복",
+    ];
+
+    let random = Math.floor(Math.random() * today.length);
+    await interaction.reply(today[random]);
+  }
+
+  if (interaction.commandName === "help") {
+    await interaction.reply("스스로 강하게 커야지? 키킼");
   }
 });
 
