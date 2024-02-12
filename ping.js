@@ -6,20 +6,16 @@ dotenv.config();
 // 사용할 슬래시 커멘드
 const commands = [
   {
-    name: "ping",
-    description: "그놈의 핑퐁",
+    name: "link",
+    description: "아카이로 류의 치지직 링크를 알려드립니다.",
   },
   {
     name: "today",
-    description: "오늘날이어둡댜",
+    description: "오늘의 아카이로 류를 알려드립니다.",
   },
   {
     name: "help",
     description: "도와줘?",
-  },
-  {
-    name: "delete",
-    description: "뭘지울건데",
   },
 ];
 
