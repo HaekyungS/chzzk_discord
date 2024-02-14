@@ -2,6 +2,13 @@
 import Discord, { GatewayIntentBits, Message, channelMention } from "discord.js";
 import dotenv from "dotenv";
 import { embedChzzk } from "./ryuChzzk.js";
+import { todayRyu } from "./models/todayRyu.js";
+import { linkCommands } from "./models/link.js";
+import { likemessage } from "./models/likemessage.js";
+import { message } from "./models/message.js";
+import { message2 } from "./models/message2.js";
+import { today } from "./models/today.js";
+import { recommendSong } from "./models/recommendSong.js";
 
 dotenv.config();
 
@@ -28,11 +35,13 @@ client.on("ready", () => {
     const channelID = process.env.Channel_ID_natural;
     const channelID2 = process.env.Channel_ID_Play;
     const channelID3 = process.env.Channel_ID_Test;
+    const channelID4 = process.env.Channel_ID_Zoe;
 
     // 채널불러오기.
     const channel = client.channels.cache.get(channelID);
     const channel2 = client.channels.cache.get(channelID2);
     const channel3 = client.channels.cache.get(channelID3);
+    const channel4 = client.channels.cache.get(channelID4);
 
     // 라이브상태를 최근라이브상태변수에 대입
     let recentState = liveStatus;
@@ -65,6 +74,7 @@ client.on("ready", () => {
             channel.send("@everyone 대쟝 보러 가쟈!\n" + { embeds: [embedsChzzk] });
             channel2.send("@everyone 대쟝 보러 가쟈!\n" + { embeds: [embedsChzzk] });
             channel3.send("@everyone 대쟝 보러 가쟈!\n" + { embeds: [embedsChzzk] });
+            channel4.send("@everyone 대쟝 보러 가쟈!\n" + { embeds: [embedsChzzk] });
           } else {
             // 뱅종하면 console로 확인
             console.log("지금 아가는 쉬는 중");
@@ -83,23 +93,43 @@ client.on("interactionCreate", async (interaction) => {
   if (!interaction.isChatInputCommand()) return;
 
   if (interaction.commandName === "link") {
-    await interaction.reply(
-      "치지직 링크는 https://chzzk.naver.com/f67b66f4051fd2744ba9366571565771 입니다.\n시간표는 유튜브 커뮤니티 혹은 트위터를 참고해주세요."
-    );
+    await interaction.reply(linkCommands);
+  }
+
+  if (interaction.commandName === "todayryu") {
+    let random = Math.floor(Math.random() * todayRyu.length);
+    await interaction.reply(todayRyu[random]);
   }
 
   if (interaction.commandName === "today") {
-    const today = [
-      "오늘도 아카이로 류는 귀엽습니다.",
-      "오늘도 류쪽이네요",
-      "오늘은 쫌 멋있습니댜.",
-      "오늘도 물음표퀘스트를 달성하고 있습니다",
-      "오늘 멋김만 등장해줄수도?!",
-      "류님 복복복복",
-    ];
-
     let random = Math.floor(Math.random() * today.length);
     await interaction.reply(today[random]);
+  }
+
+  if (interaction.commandName === "question1") {
+    let random = Math.floor(Math.random() * likemessage.length);
+    await interaction.reply(
+      "만약 당신이 아카이로 류에게 사귀자 했을 때, 대답은?! \n 아카이로 류 : " + likemessage[random]
+    );
+  }
+
+  if (interaction.commandName === "question2") {
+    let random = Math.floor(Math.random() * message.length);
+    await interaction.reply(
+      "임무 중 다친 나를 발견한 아카이로 류, 반응은?! \n 아카이로 류 : " + message[random]
+    );
+  }
+
+  if (interaction.commandName === "question3") {
+    let random = Math.floor(Math.random() * message2.length);
+    await interaction.reply(
+      "훈련장에서 아카이로 류와 눈이 마주쳤다. 류의 반응은? \n 아카이로 류 : " + message2[random]
+    );
+  }
+
+  if (interaction.commandName === "recommend_song") {
+    let random = Math.floor(Math.random() * recommendSong.length);
+    await interaction.reply(recommendSong[random]);
   }
 
   if (interaction.commandName === "help") {
@@ -108,15 +138,15 @@ client.on("interactionCreate", async (interaction) => {
 });
 
 // 커멘드에 따른 답변
-client.on("messageCreate", async (message) => {
-  // console.log(message.content);
-  if (message.content === "hello") {
-    // 아래처럼 하면 언급해서 답변하는 방식
-    // await message.reply("hihi")
+// client.on("messageCreate", async (message) => {
+//   // console.log(message.content);
+//   if (message.content === "hello") {
+//     // 아래처럼 하면 언급해서 답변하는 방식
+//     // await message.reply("hihi")
 
-    // 아래처럼 하면 일반 디엠하듯이 할 수 있음
-    await message.channel.send("hihi");
-  }
-});
+//     // 아래처럼 하면 일반 디엠하듯이 할 수 있음
+//     await message.channel.send("hihi");
+//   }
+// });
 
 client.login(process.env.Token);
