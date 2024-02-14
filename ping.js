@@ -10,12 +10,32 @@ const commands = [
     description: "아카이로 류의 치지직 링크를 알려드립니다.",
   },
   {
-    name: "today",
+    name: "todayryu",
     description: "오늘의 아카이로 류를 알려드립니다.",
+  },
+  {
+    name: "today",
+    description: "오늘의 운세를 알려드립니다.",
   },
   {
     name: "help",
     description: "도와줘?",
+  },
+  {
+    name: "question1",
+    description: "만약 당신이 아카이로 류에게 사귀자 했을 때, 대답은?!",
+  },
+  {
+    name: "question2",
+    description: "임무 중 다친 나를 발견한 아카이로 류, 반응은?!",
+  },
+  {
+    name: "question3",
+    description: "훈련장에서 아카이로 류와 눈이 마주쳤다. 류의 반응은?",
+  },
+  {
+    name: "recommend_song",
+    description: "오늘의 추천 곡을 알려드립니다!",
   },
 ];
 
