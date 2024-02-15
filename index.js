@@ -65,16 +65,16 @@ client.on("ready", () => {
           if (data.content.status === "OPEN") {
             const embedsChzzk = embedChzzk(
               data.content.liveTitle,
-              "스트리머이름",
+              "귀엽둥이 류님",
               process.env.RyuChzzk,
               data.content.categoryType,
               data.content.liveCategoryValue
             );
 
-            channel.send("@everyone 대쟝 보러 가쟈!\n" + { embeds: [embedsChzzk] });
-            channel2.send("@everyone 대쟝 보러 가쟈!\n" + { embeds: [embedsChzzk] });
-            channel3.send("@everyone 대쟝 보러 가쟈!\n" + { embeds: [embedsChzzk] });
-            channel4.send("@everyone 대쟝 보러 가쟈!\n" + { embeds: [embedsChzzk] });
+            channel.send({ embeds: [embedsChzzk] });
+            channel2.send({ embeds: [embedsChzzk] });
+            channel3.send({ embeds: [embedsChzzk] });
+            channel4.send({ embeds: [embedsChzzk] });
           } else {
             // 뱅종하면 console로 확인
             console.log("지금 아가는 쉬는 중");
