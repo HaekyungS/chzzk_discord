@@ -35,13 +35,13 @@ client.on("ready", () => {
     const channelID = process.env.Channel_ID_natural;
     const channelID2 = process.env.Channel_ID_Play;
     const channelID3 = process.env.Channel_ID_Test;
-    const channelID4 = process.env.Channel_ID_Zoe;
+    // const channelID4 = process.env.Channel_ID_Zoe;
 
     // 채널불러오기.
     const channel = client.channels.cache.get(channelID);
     const channel2 = client.channels.cache.get(channelID2);
     const channel3 = client.channels.cache.get(channelID3);
-    const channel4 = client.channels.cache.get(channelID4);
+    // const channel4 = client.channels.cache.get(channelID4);
 
     // 라이브상태를 최근라이브상태변수에 대입
     let recentState = liveStatus;
@@ -74,7 +74,7 @@ client.on("ready", () => {
             channel.send({ embeds: [embedsChzzk] });
             channel2.send({ embeds: [embedsChzzk] });
             channel3.send({ embeds: [embedsChzzk] });
-            channel4.send({ embeds: [embedsChzzk] });
+            // channel4.send({ embeds: [embedsChzzk] });
           } else {
             // 뱅종하면 console로 확인
             console.log("지금 아가는 쉬는 중");
